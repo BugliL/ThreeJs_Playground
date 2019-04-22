@@ -2,7 +2,16 @@
 
 <head>
     <script src="three.min.js"></script>
+    <style>
+        body {
+            margin: 0px;
+        }
 
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,23 +33,14 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // game logic
-        const update = function () { };
+        // Create the shape
+        let geometry = new THREE.BoxGeometry(1, 1, 1);
+        let material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, wirefram: false });
+        let cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+        camera.position.z = 3
+        renderer.render(scene, camera);
 
-        // draw scene
-        const render = function () {
-            render.render(scene, camera);
-        };
-
-        // game loop 
-        const GameLoop = function () {
-            requestAnimationFrame(GameLoop);
-            update();
-            render();
-        };
-
-
-        GameLoop();
     </script>
 </body>
 
