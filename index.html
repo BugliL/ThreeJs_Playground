@@ -2,6 +2,7 @@
 
 <head>
     <script src="three.min.js"></script>
+    <script src="OrbitControls.js"></script>
     <style>
         body {
             margin: 0px;
@@ -15,19 +16,9 @@
 </head>
 
 <body>
-    <script>
-        function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        }
-
-        function getPropotion() {
-            return window.innerWidth / window.innerHeight
-        }
-
+    <script>        
         let scene = new THREE.Scene();
-        let camera = new THREE.PerspectiveCamera(75, getPropotion(), 0.1, 1000);
+        let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
         const renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
