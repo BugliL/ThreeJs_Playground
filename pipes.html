@@ -17,59 +17,27 @@
 </head>
 
 <body>
-    <!--
-    PIPE
-        END-POINT   313.7992  -512.3222  -144.7054     50.800
-        END-POINT   313.7992  -338.3222  -144.7054     50.800
-        ITEM-CODE |52,5|52,5|
-        ITEM-DESCRIPTION Pipe 0
-    PIPE
-        END-POINT   237.7992  -262.3222  -144.7054     50.800
-        END-POINT    45.2794  -262.3222  -144.7054     50.800
-        ITEM-CODE |52,5|52,5|
-        ITEM-DESCRIPTION Pipe 2
-    PIPE
-        END-POINT    -8.4607  -240.0623  -144.7054     50.800
-        END-POINT   -92.4607  -156.0623  -144.7054     50.800
-        ITEM-CODE |52,5|52,5|
-        ITEM-DESCRIPTION Pipe 3
-    PIPE
-        END-POINT  -108.2008   -64.3222   -90.9653     50.800
-        END-POINT   -65.8179   -21.9393   -31.0269     50.800
-        ITEM-CODE |52,5|52,5|
-        ITEM-DESCRIPTION Pipe 6
-    PIPE
-        END-POINT     0.0000     0.0000     0.0000     50.800
-        END-POINT    230.116     0.0000     0.0000     50.800
-        ITEM-CODE |52,5|52,5|
-        ITEM-DESCRIPTION Pipe 7
-    PIPE
-        END-POINT    230.116     0.0000     0.0000     50.800
-        END-POINT   284.8968     0.0000     0.0000     50.800
-        ITEM-CODE |52,5|52,5|
-        ITEM-DESCRIPTION Pipe 9
-        -->
     <script>
 
         data = [
-            { "name": "PIPE 0", "section": 52.5, "length": 174, "M": { "x": 314, "y": -425, "z": -145 }, "points": { "Px": { "x": 314, "y": -512, "z": -145 }, "Py": { "x": 314, "y": -338, "z": -145 } } },
-            { "name": "PIPE 2", "section": 52.5, "length": 193, "M": { "x": 142, "y": -262, "z": -145 }, "points": { "Px": { "x": 238, "y": -262, "z": -145 }, "Py": { "x": 45, "y": -262, "z": -145 } } },
-            { "name": "PIPE 3", "section": 52.5, "length": 119, "M": { "x": -50, "y": -198, "z": -145 }, "points": { "Px": { "x": -8, "y": -240, "z": -145 }, "Py": { "x": -92, "y": -156, "z": -145 } } },
-            { "name": "PIPE 6", "section": 52.5, "length": 84, "M": { "x": -87, "y": -43, "z": -61 }, "points": { "Px": { "x": -108, "y": -64, "z": -91 }, "Py": { "x": -66, "y": -22, "z": -31 } } },
-            { "name": "PIPE 7", "section": 52.5, "length": 230, "M": { "x": 115, "y": 0, "z": 0 }, "points": { "Px": { "x": 0, "y": 0, "z": 0 }, "Py": { "x": 230, "y": 0, "z": 0 } } },
-            { "name": "PIPE 9", "section": 52.5, "length": 55, "M": { "x": 258, "y": 0, "z": 0 }, "points": { "Px": { "x": 230, "y": 0, "z": 0 }, "Py": { "x": 285, "y": 0, "z": 0 } } }
+            { "type": "PIPE", "name": "PIPE 9", "section": 52.5, "length": 55.0, "points": { "Px": { "x": 230, "y": 0, "z": 0 }, "Py": { "x": 285, "y": 0, "z": 0 }, "M": { "x": 258, "y": 0, "z": 0 } } },
+            { "type": "ELBOW", "name": "ELB_RL-1", "section": 52.5, "length": 119, "points": { "Px": { "x": 238, "y": -262, "z": -145 }, "Py": { "x": 314, "y": -338, "z": -145 }, "CP": { "x": 314, "y": -262, "z": -145 } } },
+            { "type": "ELBOW", "name": "ELB_RL-2", "section": 52.5, "length": 59, "points": { "Px": { "x": -8, "y": -240, "z": -145 }, "Py": { "x": 45, "y": -262, "z": -145 }, "CP": { "x": 14, "y": -262, "z": -145 } } },
+            { "type": "ELBOW", "name": "ELB_RL-3", "section": 52.5, "length": 120, "points": { "Px": { "x": -92, "y": -156, "z": -145 }, "Py": { "x": -108, "y": -64, "z": -91 }, "CP": { "x": -146, "y": -102, "z": -145 } } },
+            { "type": "ELBOW", "name": "ELB_RL_LOCAL1-PIPE_1^CURVE BUGLI-5", "section": 52.5, "length": 80, "points": { "Px": { "x": -66, "y": -22, "z": -31 }, "Py": { "x": 0, "y": 0, "z": 0 }, "CP": { "x": -44, "y": 0, "z": 0 } } },
+            { "type": "PIPE", "name": "PIPE 0", "section": 52.5, "length": 174.0, "points": { "Px": { "x": 314, "y": -512, "z": -145 }, "Py": { "x": 314, "y": -338, "z": -145 }, "M": { "x": 314, "y": -425, "z": -145 } } },
+            { "type": "PIPE", "name": "PIPE 2", "section": 52.5, "length": 193.0, "points": { "Px": { "x": 238, "y": -262, "z": -145 }, "Py": { "x": 45, "y": -262, "z": -145 }, "M": { "x": 142, "y": -262, "z": -145 } } },
+            { "type": "PIPE", "name": "PIPE 3", "section": 52.5, "length": 119.0, "points": { "Px": { "x": -8, "y": -240, "z": -145 }, "Py": { "x": -92, "y": -156, "z": -145 }, "M": { "x": -50, "y": -198, "z": -145 } } },
+            { "type": "PIPE", "name": "PIPE 6", "section": 52.5, "length": 84.0, "points": { "Px": { "x": -108, "y": -64, "z": -91 }, "Py": { "x": -66, "y": -22, "z": -31 }, "M": { "x": -87, "y": -43, "z": -61 } } },
+            { "type": "PIPE", "name": "PIPE 7", "section": 52.5, "length": 230.0, "points": { "Px": { "x": 0, "y": 0, "z": 0 }, "Py": { "x": 230, "y": 0, "z": 0 }, "M": { "x": 115, "y": 0, "z": 0 } } },
         ];
 
         let scene = new THREE.Scene();
-        // adding fog
-        //      scene.background = new THREE.Color( 0xcccccc );
-        //scene.fog = new THREE.FogExp2( 0xcccccc, 0.002 );
-
         let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const FirstCylinderData = data[0];
-        camera.position.x = FirstCylinderData.M.x - 2;
-        camera.position.y = FirstCylinderData.M.y - 2;
-        camera.position.z = FirstCylinderData.M.z - 2;
+        const FirstPieceData = data[0];
+        camera.position.x = FirstPieceData.points.M.x - 2;
+        camera.position.y = FirstPieceData.points.M.y - 2;
+        camera.position.z = FirstPieceData.points.M.z - 2;
 
 
         const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -81,38 +49,73 @@
         controls.addEventListener('change', render);
 
         // Create the shape
-        data.forEach(function (cylinderData) {
-            const material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, wireframe: true });
-            scene.add(createCylinder(cylinderData, material));
+        data.forEach(function (pieceData) {
+            scene.add(createPiece(pieceData));
         });
 
         render();
         loop();
 
-        function createCylinder(cylinderData, material) {
-            let points = cylinderData.points;
-            let vector = new THREE.Vector3(
-                points.Py.x - points.Px.x,
-                points.Py.y - points.Px.y,
-                points.Py.z - points.Px.z
-            );
+        function createPiece(pieceData) {
+            const material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, wireframe: true });
+            const createFunction = {
+                'PIPE': createCylinder,
+                'ELBOW': createElbow
+            }
+            return createFunction[pieceData.type](pieceData, material)
 
-            let M = cylinderData.M;
-            let middlePosition = new THREE.Vector3(M.x, M.y, M.z);
+            function createElbow(elbowData, material) {
+                let curve = new THREE.QuadraticBezierCurve3(
+                    new THREE.Vector3(elbowData.points.Px.x, elbowData.points.Px.y, elbowData.points.Px.z),
+                    new THREE.Vector3(elbowData.points.CP.x, elbowData.points.CP.y, elbowData.points.CP.z),
+                    new THREE.Vector3(elbowData.points.Py.x, elbowData.points.Py.y, elbowData.points.Py.z)
+                );                
+                //TubeGeometry(path : Curve, tubularSegments : Integer, radius : Float, radialSegments : Integer, closed : Boolean)
+                //path - Curve - A path that inherits from the Curve base class
+                //tubularSegments - Integer - The number of segments that make up the tube, default is 64
+                //radius - Float - The radius of the tube, default is 1
+                //radialSegments - Integer - The number of segments that make up the cross-section, default is 8
+                //closed - Boolean Is the tube open or closed, default is false
+                let geometry = new THREE.TubeGeometry(curve, 20, elbowData.section, 8, false);
+                return new THREE.Mesh(geometry, material);
+            }
 
-            let cylinderGeometry = new THREE.CylinderGeometry(
-                cylinderData.section,
-                cylinderData.section,
-                cylinderData.length,
-                15, 1, true
-            );
+            function createCylinder(cylinderData, material) {
+                let points = cylinderData.points;
+                let vector = new THREE.Vector3(
+                    points.Py.x - points.Px.x,
+                    points.Py.y - points.Px.y,
+                    points.Py.z - points.Px.z
+                );
 
-            var axis = new THREE.Vector3(0, 1, 0);
-            let cylinder = new THREE.Mesh(cylinderGeometry, material);
-            cylinder.quaternion.setFromUnitVectors(axis, vector.clone().normalize());
-            cylinder.position.copy(middlePosition.clone());           
-            return cylinder;
+                let M = cylinderData.points.M;
+                let middlePosition = new THREE.Vector3(M.x, M.y, M.z);
+
+                //CylinderGeometry(radiusTop : Float, radiusBottom : Float, height : Float, radialSegments : Integer, heightSegments : Integer, openEnded : Boolean, thetaStart : Float, thetaLength : Float)
+                //radiusTop - Radius of the cylinder at the top. Default is 1.
+                //radiusBottom - Radius of the cylinder at the bottom. Default is 1.
+                //height - Height of the cylinder. Default is 1.
+                //radialSegments - Number of segmented faces around the circumference of the cylinder. Default is 8
+                //heightSegments - Number of rows of faces along the height of the cylinder. Default is 1.
+                //openEnded - A Boolean indicating whether the ends of the cylinder are open or capped. Default is false, meaning capped.
+                //thetaStart - Start angle for first segment, default = 0 (three o'clock position).
+                //thetaLength - The central angle, often called theta, of the circular sector. The default is 2*Pi, which makes for a complete cylinder.
+                let cylinderGeometry = new THREE.CylinderGeometry(
+                    cylinderData.section,
+                    cylinderData.section,
+                    cylinderData.length,
+                    15, 1, true
+                );
+
+                var axis = new THREE.Vector3(0, 1, 0);
+                let cylinder = new THREE.Mesh(cylinderGeometry, material);
+                cylinder.quaternion.setFromUnitVectors(axis, vector.clone().normalize());
+                cylinder.position.copy(middlePosition.clone());
+                return cylinder;
+            }
         }
+
+
 
         function loop() {
             requestAnimationFrame(loop);
