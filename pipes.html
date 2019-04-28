@@ -52,24 +52,13 @@
     <script>
 
         data = [
-            {
-                'name': "Pipe 0",
-                'section': 52.5,
-                'length': 174,
-                'M': { 'x': 313, 'y': -425, 'z': -144 },
-                'points': [
-                    {
-                        'name': 'Px',
-                        'x': 313, 'y': -512, 'z': -144
-                    },
-                    {
-                        'name': 'Py',
-                        'x': 313, 'y': -338, 'z': -144
-                    },
-                ]
-            }
+            { "name": "PIPE 0", "section": 52.5, "length": 174, "M": { "x": 314, "y": -425, "z": -145 }, "points": { "Px": { "x": 314, "y": -512, "z": -145 }, "Py": { "x": 314, "y": -338, "z": -145 } } },
+            { "name": "PIPE 2", "section": 52.5, "length": 193, "M": { "x": 142, "y": -262, "z": -145 }, "points": { "Px": { "x": 238, "y": -262, "z": -145 }, "Py": { "x": 45, "y": -262, "z": -145 } } },
+            { "name": "PIPE 3", "section": 52.5, "length": 119, "M": { "x": -50, "y": -198, "z": -145 }, "points": { "Px": { "x": -8, "y": -240, "z": -145 }, "Py": { "x": -92, "y": -156, "z": -145 } } },
+            { "name": "PIPE 6", "section": 52.5, "length": 84, "M": { "x": -87, "y": -43, "z": -61 }, "points": { "Px": { "x": -108, "y": -64, "z": -91 }, "Py": { "x": -66, "y": -22, "z": -31 } } },
+            { "name": "PIPE 7", "section": 52.5, "length": 230, "M": { "x": 115, "y": 0, "z": 0 }, "points": { "Px": { "x": 0, "y": 0, "z": 0 }, "Py": { "x": 230, "y": 0, "z": 0 } } },
+            { "name": "PIPE 9", "section": 52.5, "length": 55, "M": { "x": 258, "y": 0, "z": 0 }, "points": { "Px": { "x": 230, "y": 0, "z": 0 }, "Py": { "x": 285, "y": 0, "z": 0 } } }
         ];
-        const cylinderData = data[0];
 
         let scene = new THREE.Scene();
         // adding fog
@@ -77,9 +66,10 @@
         //scene.fog = new THREE.FogExp2( 0xcccccc, 0.002 );
 
         let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.x = cylinderData.M.x - 1;
-        camera.position.y = cylinderData.M.y - 1;
-        camera.position.z = cylinderData.M.z - 1;
+        const FirstCylinderData = data[0];
+        camera.position.x = FirstCylinderData.M.x - 2;
+        camera.position.y = FirstCylinderData.M.y - 2;
+        camera.position.z = FirstCylinderData.M.z - 2;
 
 
         const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -91,23 +81,38 @@
         controls.addEventListener('change', render);
 
         // Create the shape
-        const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
-        const cylinderGeometry = new THREE.CylinderGeometry(1, 1, cylinderData.length, 10, 1, true);
-        const material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, wireframe: true });
-        const cylinder = new THREE.Mesh(cylinderGeometry, material);
-        cylinder.position.x = cylinderData.M.x;
-        cylinder.position.y = cylinderData.M.y;
-        cylinder.position.z = cylinderData.M.z;
-        scene.add(cylinder);
-
-        const cube = new THREE.Mesh(cubeGeometry, material);
-        cube.position.x = cylinderData.M.x;
-        cube.position.y = cylinderData.M.y;
-        cube.position.z = cylinderData.M.z;
-        scene.add(cube);
+        data.forEach(function (cylinderData) {
+            const material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, wireframe: true });
+            scene.add(createCylinder(cylinderData, material));
+        });
 
         render();
         loop();
+
+        function createCylinder(cylinderData, material) {
+            let points = cylinderData.points;
+            let vector = new THREE.Vector3(
+                points.Py.x - points.Px.x,
+                points.Py.y - points.Px.y,
+                points.Py.z - points.Px.z
+            );
+
+            let M = cylinderData.M;
+            let middlePosition = new THREE.Vector3(M.x, M.y, M.z);
+
+            let cylinderGeometry = new THREE.CylinderGeometry(
+                cylinderData.section,
+                cylinderData.section,
+                cylinderData.length,
+                15, 1, true
+            );
+
+            var axis = new THREE.Vector3(0, 1, 0);
+            let cylinder = new THREE.Mesh(cylinderGeometry, material);
+            cylinder.quaternion.setFromUnitVectors(axis, vector.clone().normalize());
+            cylinder.position.copy(middlePosition.clone());           
+            return cylinder;
+        }
 
         function loop() {
             requestAnimationFrame(loop);
